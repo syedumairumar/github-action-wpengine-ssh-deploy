@@ -43,7 +43,7 @@ chmod 600 "$WPE_SSHG_KEY_PRIVATE_PATH"
 chmod 644 "$WPE_SSHG_KEY_PUBLIC_PATH"
 
 # Build assets
-- run: cd ${GITHUB_WORKSPACE}/wp-content/themes/vrf-sage && npm install && npm build
+cd ${GITHUB_WORKSPACE}/wp-content/themes/vrf-sage && npm install && npm build
 
 # Deploy via SSH
 rsync --rsh="ssh -v -p 22 -i ${WPE_SSHG_KEY_PRIVATE_PATH} -o StrictHostKeyChecking=no" -a --out-format="%n"  --exclude=".*" $SRC_PATH "$WPE_DESTINATION"
